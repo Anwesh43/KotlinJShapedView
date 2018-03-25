@@ -47,8 +47,8 @@ class JShapedView(ctx : Context) : View(ctx) {
             val w = canvas.width.toFloat()
             val h = canvas.height.toFloat()
             val r = Math.min(w,h)/10
-            val START_ANGLE = 165f
-            val SWEEP_ANGLE = 150f
+            val START_ANGLE = 120f
+            val SWEEP_ANGLE = 60f
             val END_ANGLE = START_ANGLE - SWEEP_ANGLE
             val LINE_X = r * Math.cos((END_ANGLE) * Math.PI/180).toFloat()
             val LINE_Y = r * Math.sin(END_ANGLE * Math.PI/180).toFloat()
