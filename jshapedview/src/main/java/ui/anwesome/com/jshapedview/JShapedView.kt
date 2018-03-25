@@ -41,7 +41,7 @@ class JShapedView(ctx : Context) : View(ctx) {
             }
         }
     }
-    data class JShapedView (var i : Int, val state : State = State()) {
+    data class JShaped (var i : Int, val state : State = State()) {
         fun draw(canvas : Canvas, paint : Paint) {
             val w = canvas.width.toFloat()
             val h = canvas.height.toFloat()
@@ -89,6 +89,25 @@ class JShapedView(ctx : Context) : View(ctx) {
         fun stop() {
             if (animated) {
                 animated = false
+            }
+        }
+    }
+    data class Renderer(var view : JShapedView) {
+        val jShaped : JShaped = JShaped(0)
+        val animator : Animator = Animator(view)
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#212121"))
+            paint.color = Color.YELLOW
+            jShaped.draw(canvas, paint)
+            animator.animate {
+                jShaped.update {
+                    animator.stop()
+                }
+            }
+        }
+        fun handleTap() {
+            jShaped.startUpdating {
+                animator.start()
             }
         }
     }
