@@ -3,6 +3,7 @@ package ui.anwesome.com.jshapedview
 /**
  * Created by anweshmishra on 25/03/18.
  */
+import android.app.Activity
 import android.content.*
 import android.view.*
 import android.graphics.*
@@ -110,6 +111,13 @@ class JShapedView(ctx : Context) : View(ctx) {
             jShaped.startUpdating {
                 animator.start()
             }
+        }
+    }
+    companion object {
+        fun create(activity : Activity) : JShapedView {
+            val view = JShapedView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
